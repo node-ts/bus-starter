@@ -14,7 +14,7 @@ import { SirenTestWorkflowData, SirenTestWorkflow } from './workflows'
 const container = new ApplicationContainer()
 container.rebind(WINSTON_SYMBOLS.WinstonConfiguration).to(LoggerConfiguration)
 
-async function runDemo (): Promise<void> {
+async function initialize (): Promise<void> {
   const workflowRegistry = container.get<WorkflowRegistry>(BUS_WORKFLOW_SYMBOLS.WorkflowRegistry)
   workflowRegistry.register(SirenTestWorkflow, SirenTestWorkflowData)
   await workflowRegistry.initializeWorkflows()
@@ -22,14 +22,17 @@ async function runDemo (): Promise<void> {
   const bootstrap = container.get<ApplicationBootstrap>(BUS_SYMBOLS.ApplicationBootstrap)
   bootstrap.registerHandler(StartSirenTestHandler)
   bootstrap.registerHandler(EmailMaintenanceTeamHandler)
-  await bootstrap.initialize(container)
 
+  await bootstrap.initialize(container)
+}
+
+async function runDemo (): Promise<void> {
   const bus = container.get<Bus>(BUS_SYMBOLS.Bus)
   await bus.send(new StartSirenTest(generateUuid()))
 }
 
-runDemo()
-  .then(() => undefined)
-  .catch(() => {
-    // ...
+initialize()
+  .then(runDemo)
+  .catch(err => {
+    console.log(err)
   })
