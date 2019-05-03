@@ -1,5 +1,7 @@
 # @node-ts/bus-starter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/node-ts/bus-starter.svg)](https://greenkeeper.io/)
+
 A starter project for @node-ts/bus for building distributed message based systems with node.
 
 ## Why?
