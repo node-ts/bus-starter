@@ -1,0 +1,33 @@
+{
+  "name": "@node-ts/bus-starter",
+  "version": "0.0.1",
+  "description": "An empty starter project for @node-ts/bus for writing distributed message based applications with Node",
+  "main": "index.js",
+  "repository": "https://github.com/node-ts/bus-starter.git",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --project tsconfig.json --outdir dist",
+    "dev": "nodemon --watch ./src -e ts --exec 'yarn run dev:rebuild' dist/index.js",
+    "dev:rebuild": "yarn run build && node dist/index.js",
+    "lint": "tslint --project tsconfig.json",
+    "lint:fix": "yarn run lint --fix"
+  },
+  "dependencies": {
+    "@node-ts/bus-core": "^0.2.0",
+    "@node-ts/bus-messages": "^0.1.4",
+    "@node-ts/bus-workflow": "^0.2.1",
+    "@node-ts/logger-core": "^0.0.17",
+    "@node-ts/logger-winston": "^0.0.9",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13",
+    "uuid": "^3.3.2",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@node-ts/code-standards": "^0.0.10",
+    "@types/uuid": "^3.4.4",
+    "nodemon": "^1.19.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  }
+}

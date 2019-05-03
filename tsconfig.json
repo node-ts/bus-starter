@@ -1,0 +1,9 @@
+{
+  "extends": "./node_modules/@node-ts/code-standards/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  }
+}
+  

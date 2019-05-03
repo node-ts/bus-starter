@@ -1,0 +1,52 @@
+{
+  "command": {
+    "prefix": "command",
+    "body": [
+      "import { Command } from '@node-ts/bus-messages'",
+      "",
+      "export class $1 extends Command {",
+      "",
+      "  static readonly NAME = '$2'",
+      "  readonly \\$name = $1.NAME",
+      "  readonly \\$version = 0",
+      "",
+      "  /**",
+      "   * ${3:Describe what executing the command will do}",
+      "   */",
+      "  constructor (",
+      "    $0",
+      "  ) {",
+      "    super()",
+      "  }",
+      "",
+      "}",
+      ""
+    ],
+    "description": "A command that changes some part of the system."
+  },
+  "event": {
+    "prefix": "event",
+    "body": [
+      "import { Event } from '@node-ts/bus-messages'",
+      "",
+      "export class $1 extends Event {",
+      "",
+      "  static readonly NAME = '$2'",
+      "  readonly \\$name = $1.NAME",
+      "  readonly \\$version = 0",
+      "",
+      "  /**",
+      "   * ${3:Describe what changed in the system}",
+      "   */",
+      "  constructor (",
+      "    $0",
+      "  ) {",
+      "    super()",
+      "  }",
+      "",
+      "}",
+      ""
+    ],
+    "description": "An event that signifies somethig has changed in the system."
+  }
+}
