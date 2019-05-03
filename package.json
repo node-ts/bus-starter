@@ -7,10 +7,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --project tsconfig.json --outdir dist",
-    "dev": "nodemon --watch ./src -e ts --exec 'yarn run dev:rebuild' dist/index.js",
-    "dev:rebuild": "yarn run build && node dist/index.js",
+    "dev": "nodemon --watch ./src -e ts --exec 'npm run dev:rebuild' dist/index.js",
+    "dev:rebuild": "npm run build && node dist/index.js",
     "lint": "tslint --project tsconfig.json",
-    "lint:fix": "yarn run lint --fix"
+    "lint:fix": "npm run lint --fix"
   },
   "dependencies": {
     "@node-ts/bus-core": "^0.2.0",
