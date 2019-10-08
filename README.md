@@ -1,23 +1,23 @@
 # @node-ts/bus-starter
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/node-ts/bus-starter.svg)](https://greenkeeper.io/) [![CircleCI](https://circleci.com/gh/node-ts/bus-starter/tree/master.svg?style=svg)](https://circleci.com/gh/node-ts/bus-starter/tree/master) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) 
+[![Greenkeeper badge](https://badges.greenkeeper.io/node-ts/bus-starter.svg)](https://greenkeeper.io/) [![CircleCI](https://circleci.com/gh/node-ts/bus-starter/tree/master.svg?style=svg)](https://circleci.com/gh/node-ts/bus-starter/tree/master) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 A starter project for @node-ts/bus for building distributed message based systems with node.
 
 ## Why?
 
-[@node-ts/bus](https://node-ts.github.io/bus/) is focussed on helping build distributed systems in node based on messaging patterns that are reliable, scalable and fault tolerant. Applications built this way can:
+[@node-ts/bus](https://node-ts.github.io/bus/) is focused on helping build distributed systems in node based on messaging patterns that are reliable, scalable and fault tolerant. Applications built this way can:
 
 * survive restarts and downtime
 * handle bursty loads
 * scale in and out easily
-* survive network interuptions
+* survive network interruptions
 * tolerate external API outages
 * easily be refactored from monolith to microservice
 
 All without losing data. This makes message based systems a great choice where reliability and data integrity is key.
 
-However, building distributed message based applications isn't simple. At its heart, this project uses the service bus from [@node-ts/bus](https://node-ts.github.io/bus/) that encapsulates many of the complexities when dealing with messaging technologies and approaches. 
+However, building distributed message based applications isn't simple. At its heart, this project uses the service bus from [@node-ts/bus](https://node-ts.github.io/bus/) that encapsulates many of the complexities when dealing with messaging technologies and approaches.
 
 Your code stays cleaner, as only business logic related code needs to be written. Concerns on how a message is dispatched, routed, received, processed, retried etc are all handled by the underlying framework. This remains true regardless if the app operates in a single process in memory, or runs with many services and instances across many compute instances.
 
@@ -56,7 +56,7 @@ At this point you can remove the existing messages/handlers/workflows and start 
 * install a [durable transport](https://node-ts.github.io/bus/packages/bus-core/src/transport/)
 * install a [durable persistence](https://node-ts.github.io/bus/packages/bus-workflow/src/workflow/persistence/)
 
-These steps are crucial to ensuring your appliation is resilient and scalable
+These steps are crucial to ensuring your application is resilient and scalable
 
 ## Scripts
 
@@ -70,7 +70,7 @@ The following scripts are available as part of the starter project:
 
 ## Running
 
-A small implementation of a distributed application has been made to demonstrate a generic project structure. This should be removed and replaced with your implementation. 
+A small implementation of a distributed application has been made to demonstrate a generic project structure. This should be removed and replaced with your implementation.
 
 The example used is testing sirens for correct operation (such as in a building fire alarm test). When a siren is tested, it publishes an event depending on success or failure. If a failure event is published, a workflow coordinates the sending of an email to the maintenance team to fix the siren.
 
