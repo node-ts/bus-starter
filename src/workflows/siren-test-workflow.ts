@@ -1,6 +1,6 @@
 import { Workflow, StartedBy, Handles } from '@node-ts/bus-workflow'
 import { SirenTestWorkflowData } from './sirent-test-workflow-data'
-import { SirenTestStarted, SirenTestFailed, EmailMaintenanceTeam, MaintenanceTeamEmailed } from '../messages'
+import { SirenTestStarted, SirenTestFailed, SirenTestPassed, EmailMaintenanceTeam, MaintenanceTeamEmailed } from '../messages'
 import { inject } from 'inversify'
 import { BUS_SYMBOLS, Bus } from '@node-ts/bus-core'
 
@@ -30,6 +30,15 @@ export class SirenTestWorkflow extends Workflow<SirenTestWorkflowData> {
       sirenId
     )
     await this.bus.send(emailMaintenanceTeam)
+    return {}
+  }
+
+  @Handles<SirenTestPassed, SirenTestWorkflowData, 'handlesSirenTestPassed'>(
+    SirenTestPassed,
+    event => event.sirenId,
+    'sirenId'
+  )
+  async handlesSirenTestPassed (_: SirenTestPassed): Promise<Partial<SirenTestWorkflowData>> {
     return this.complete()
   }
 
@@ -39,7 +48,9 @@ export class SirenTestWorkflow extends Workflow<SirenTestWorkflowData> {
     'sirenId'
   )
   async handlesMaintenanceTeamEmailed (_: MaintenanceTeamEmailed): Promise<Partial<SirenTestWorkflowData>> {
-    return this.complete()
+    return this.complete({
+      maintenanceEmailSent: true
+    })
   }
 
 }
