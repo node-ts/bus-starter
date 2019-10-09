@@ -8,7 +8,14 @@ const consoleTransport = new transports.Console({
 
 @injectable()
 export class LoggerConfiguration implements WinstonConfiguration {
-  getConfiguration (loggerName: string): LoggerOptions {
+
+  /**
+   * The "winston" logging library prefers a single instance of their logger
+   * as creates an event emitter per instance. As such this function returns
+   * a generic global configuration, with the metadata of the injection target
+   * added via a logger proxy that's internal to `WinstonModule`
+   */
+  getConfiguration (): LoggerOptions {
     const devFormat = format.printf(({
       level,
       message,
@@ -25,7 +32,6 @@ export class LoggerConfiguration implements WinstonConfiguration {
     })
 
     return {
-      defaultMeta: { loggerName },
       transports: [consoleTransport],
       level: 'info',
       format: format.combine(
