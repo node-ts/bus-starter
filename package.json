@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint --fix"
   },
   "dependencies": {
-    "@node-ts/bus-core": "^0.2.0",
+    "@node-ts/bus-core": "^0.3.0",
     "@node-ts/bus-messages": "^0.1.4",
     "@node-ts/bus-workflow": "^0.2.1",
     "@node-ts/logger-core": "^0.0.17",
