@@ -5,4 +5,5 @@ export class SirenTestWorkflowData extends WorkflowData {
   $name = 'bus-starter/siren-test-data'
 
   sirenId: Uuid
+  maintenanceEmailSent: boolean
 }
