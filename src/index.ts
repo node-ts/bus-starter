@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 
-import { ApplicationContainer } from './application-container'
+import { container } from './application-container'
 import { BUS_SYMBOLS, Bus, ApplicationBootstrap } from '@node-ts/bus-core'
 import { generateUuid } from './messages/uuid'
 import { WINSTON_SYMBOLS } from '@node-ts/logger-winston'
@@ -11,7 +11,6 @@ import { StartSirenTestHandler, EmailMaintenanceTeamHandler } from './handlers'
 import { WorkflowRegistry, BUS_WORKFLOW_SYMBOLS } from '@node-ts/bus-workflow'
 import { SirenTestWorkflowData, SirenTestWorkflow } from './workflows'
 
-const container = new ApplicationContainer()
 container.rebind(WINSTON_SYMBOLS.WinstonConfiguration).to(LoggerConfiguration)
 
 async function initialize (): Promise<void> {
