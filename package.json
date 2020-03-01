@@ -13,21 +13,22 @@
     "lint:fix": "npm run lint --fix"
   },
   "dependencies": {
-    "@node-ts/bus-core": "^0.4.9",
-    "@node-ts/bus-messages": "^0.1.10",
-    "@node-ts/bus-workflow": "^0.4.9",
+    "@node-ts/bus-core": "^0.5.1",
+    "@node-ts/bus-messages": "^0.2.1",
+    "@node-ts/bus-rabbitmq": "^0.4.1",
+    "@node-ts/bus-workflow": "^0.5.1",
     "@node-ts/logger-core": "^0.1.0",
     "@node-ts/logger-winston": "^0.1.0",
     "inversify": "^5.0.1",
     "reflect-metadata": "^0.1.13",
-    "uuid": "^3.3.2",
+    "uuid": "^7.0.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {
     "@node-ts/code-standards": "^0.0.10",
-    "@types/uuid": "^3.4.4",
-    "nodemon": "^1.19.0",
-    "tslint": "^5.16.0",
+    "@types/uuid": "^7.0.0",
+    "nodemon": "^2.0.2",
+    "tslint": "^6.0.0",
     "typescript": "^3.4.5"
   }
 }
