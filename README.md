@@ -1,6 +1,6 @@
 # @node-ts/bus-starter
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/node-ts/bus-starter.svg)](https://greenkeeper.io/) [![CircleCI](https://circleci.com/gh/node-ts/bus-starter/tree/master.svg?style=svg)](https://circleci.com/gh/node-ts/bus-starter/tree/master) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+ [![CircleCI](https://circleci.com/gh/node-ts/bus-starter/tree/master.svg?style=svg)](https://circleci.com/gh/node-ts/bus-starter/tree/master) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 A starter project for @node-ts/bus for building distributed message based systems with node.
 
