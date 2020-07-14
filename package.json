@@ -15,7 +15,7 @@
   "dependencies": {
     "@node-ts/bus-core": "^0.5.1",
     "@node-ts/bus-messages": "^0.2.1",
-    "@node-ts/bus-rabbitmq": "^0.5.0",
+    "@node-ts/bus-rabbitmq": "^0.6.0",
     "@node-ts/bus-workflow": "^0.5.1",
     "@node-ts/logger-core": "^0.1.0",
     "@node-ts/logger-winston": "^0.1.0",
