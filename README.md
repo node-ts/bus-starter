@@ -6,7 +6,7 @@ A starter project for @node-ts/bus for building distributed message based system
 
 ## Why?
 
-[@node-ts/bus](https://node-ts.github.io/bus/) is focused on helping build distributed systems in node based on messaging patterns that are reliable, scalable and fault tolerant. Applications built this way can:
+[@node-ts/bus](https://node-ts.gitbook.io/bus/) is focused on helping build distributed systems in node based on messaging patterns that are reliable, scalable and fault tolerant. Applications built this way can:
 
 * survive restarts and downtime
 * handle bursty loads
@@ -17,7 +17,7 @@ A starter project for @node-ts/bus for building distributed message based system
 
 All without losing data. This makes message based systems a great choice where reliability and data integrity is key.
 
-However, building distributed message based applications isn't simple. At its heart, this project uses the service bus from [@node-ts/bus](https://node-ts.github.io/bus/) that encapsulates many of the complexities when dealing with messaging technologies and approaches.
+However, building distributed message based applications isn't simple. At its heart, this project uses the service bus from [@node-ts/bus](https://node-ts.gitbook.io/bus/) that encapsulates many of the complexities when dealing with messaging technologies and approaches.
 
 Your code stays cleaner, as only business logic related code needs to be written. Concerns on how a message is dispatched, routed, received, processed, retried etc are all handled by the underlying framework. This remains true regardless if the app operates in a single process in memory, or runs with many services and instances across many compute instances.
 
@@ -46,15 +46,20 @@ Then install the dependencies
 npm i
 ```
 
-Once done, run the following command and observe the log output:
+Start a local RabbitMQ container
+```bash
+docker run -d -p 8080:15672 -p 5672:5672 rabbitmq:3-management
 ```
+
+Run the following command and observe the log output:
+```bash
 npm run dev
 ```
 
 At this point you can remove the existing messages/handlers/workflows and start implementing your own. Before moving to production, be sure to do the following tasks:
 
-* install a [durable transport](https://node-ts.github.io/bus/packages/bus-core/src/transport/)
-* install a [durable persistence](https://node-ts.github.io/bus/packages/bus-workflow/src/workflow/persistence/)
+* configure a different [transport](hhttps://node-ts.gitbook.io/bus/reference/transports)
+* install a [durable persistence](https://node-ts.gitbook.io/bus/reference/persistence)
 
 These steps are crucial to ensuring your application is resilient and scalable
 
@@ -78,7 +83,7 @@ This is a basic demonstration, but it shows how distributed systems can stay dec
 
 ## Further Information
 
-For more information on how to use the service bus, visit [@node-ts/bus](https://node-ts.github.io/bus/).
+For more information on how to use the service bus, visit [@node-ts/bus](https://node-ts.gitbook.io/bus/).
 
 If you're interested in Domain Driven Design to help design your code that reduces complexity, have a look at [@node-ts/ddd](https://github.com/node-ts/ddd) which integrates seamlessly with the service bus.
 

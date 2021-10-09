@@ -1,29 +1,39 @@
-import { Workflow, StartedBy, Handles } from '@node-ts/bus-workflow'
 import { SirenTestWorkflowData } from './sirent-test-workflow-data'
 import { SirenTestStarted, SirenTestFailed, SirenTestPassed, EmailMaintenanceTeam, MaintenanceTeamEmailed } from '../messages'
-import { inject } from 'inversify'
-import { BUS_SYMBOLS, Bus } from '@node-ts/bus-core'
+import { BusInstance, Workflow, WorkflowMapper } from '@node-ts/bus-core'
 
 export class SirenTestWorkflow extends Workflow<SirenTestWorkflowData> {
 
   constructor (
-    @inject(BUS_SYMBOLS.Bus) private readonly bus: Bus
+    private readonly bus: BusInstance
   ) {
     super()
   }
 
-  @StartedBy<SirenTestStarted, SirenTestWorkflowData, 'handlesSirenTestStarted'>(SirenTestStarted)
+  configureWorkflow (mapper: WorkflowMapper<SirenTestWorkflowData, SirenTestWorkflow>) {
+    mapper
+      .withState(SirenTestWorkflowData)
+      .startedBy(SirenTestStarted, 'handlesSirenTestStarted')
+      .when(SirenTestFailed, 'handlesSirenTestFailed', {
+        lookup: event => event.sirenId,
+        mapsTo: 'sirenId'
+      })
+      .when(SirenTestPassed, 'handlesSirenTestPassed', {
+        lookup: event => event.sirenId,
+        mapsTo: 'sirenId'
+      })
+      .when(MaintenanceTeamEmailed, 'handlesMaintenanceTeamEmailed', {
+        lookup: event => event.sirenId,
+        mapsTo: 'sirenId'
+      })
+  }
+
   handlesSirenTestStarted ({ sirenId }: SirenTestStarted): Partial<SirenTestWorkflowData> {
     return {
       sirenId
     }
   }
 
-  @Handles<SirenTestFailed, SirenTestWorkflowData, 'handlesSirenTestFailed'>(
-    SirenTestFailed,
-    event => event.sirenId,
-    'sirenId'
-  )
   async handlesSirenTestFailed ({ sirenId }: SirenTestFailed): Promise<Partial<SirenTestWorkflowData>> {
     const emailMaintenanceTeam = new EmailMaintenanceTeam(
       'A siren has failed its test and requires maintenance',
@@ -33,22 +43,12 @@ export class SirenTestWorkflow extends Workflow<SirenTestWorkflowData> {
     return {}
   }
 
-  @Handles<SirenTestPassed, SirenTestWorkflowData, 'handlesSirenTestPassed'>(
-    SirenTestPassed,
-    event => event.sirenId,
-    'sirenId'
-  )
   async handlesSirenTestPassed (_: SirenTestPassed): Promise<Partial<SirenTestWorkflowData>> {
-    return this.complete()
+    return this.completeWorkflow()
   }
 
-  @Handles<MaintenanceTeamEmailed, SirenTestWorkflowData, 'handlesMaintenanceTeamEmailed'>(
-    MaintenanceTeamEmailed,
-    event => event.sirenId,
-    'sirenId'
-  )
   async handlesMaintenanceTeamEmailed (_: MaintenanceTeamEmailed): Promise<Partial<SirenTestWorkflowData>> {
-    return this.complete({
+    return this.completeWorkflow({
       maintenanceEmailSent: true
     })
   }
