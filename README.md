@@ -67,6 +67,8 @@ The following scripts are available as part of the starter project:
 * `dev:rebuild` - transpiles and runs the app
 * `lint` - runs linting based on [@node-ts/code-standards](https://github.com/node-ts/code-standards)
 * `lint:fix` - attempts to fix linting violations
+* `test` - run all tests
+* `test:watch` - run tests in watch mode
 
 ## Running
 
