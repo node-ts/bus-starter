@@ -1,0 +1,11 @@
+{
+  "testRegex": "(src\\/.+\\.|/)(spec|integration)\\.ts$",
+  "transform": {
+    "./src/.+\\.ts?$": [
+      "esbuild-jest",
+      {
+        "sourcemap": true
+      }
+    ]
+  }
+}

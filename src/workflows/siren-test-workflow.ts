@@ -1,14 +1,15 @@
-import { SirenTestWorkflowData } from './sirent-test-workflow-data'
-import { SirenTestStarted, SirenTestFailed, SirenTestPassed, EmailMaintenanceTeam, MaintenanceTeamEmailed } from '../messages'
-import { BusInstance, Workflow, WorkflowMapper } from '@node-ts/bus-core'
+import { SirenTestWorkflowData } from './siren-test-workflow-data'
+import {
+  SirenTestStarted,
+  SirenTestFailed,
+  SirenTestPassed,
+  EmailMaintenanceTeam,
+  MaintenanceTeamEmailed
+} from '../messages'
+import { Workflow, WorkflowMapper } from '@node-ts/bus-core'
+import { bus } from '../bus'
 
 export class SirenTestWorkflow extends Workflow<SirenTestWorkflowData> {
-
-  constructor (
-    private readonly bus: BusInstance
-  ) {
-    super()
-  }
 
   configureWorkflow (mapper: WorkflowMapper<SirenTestWorkflowData, SirenTestWorkflow>) {
     mapper
@@ -39,7 +40,7 @@ export class SirenTestWorkflow extends Workflow<SirenTestWorkflowData> {
       'A siren has failed its test and requires maintenance',
       sirenId
     )
-    await this.bus.send(emailMaintenanceTeam)
+    await bus().send(emailMaintenanceTeam)
     return {}
   }
 
