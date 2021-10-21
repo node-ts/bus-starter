@@ -3,7 +3,7 @@ import { BusInstance, handlerFor } from '@node-ts/bus-core'
 import { Uuid } from '../messages/uuid'
 import { bus } from '../bus'
 
-const MAX_SIREN_TEST_DURATION = 5000
+const MAX_SIREN_TEST_DURATION = 1000
 const TEST_FAILURE_THRESHOLD = 0.5
 
 export const startSirenTestHandler = handlerFor(
