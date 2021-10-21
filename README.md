@@ -64,7 +64,6 @@ The following scripts are available as part of the starter project:
 
 * `build` - transpiles the code to `/dist`
 * `dev` - transpiles, runs and watches for code changes
-* `dev:rebuild` - transpiles and runs the app
 * `lint` - runs linting based on [@node-ts/code-standards](https://github.com/node-ts/code-standards)
 * `lint:fix` - attempts to fix linting violations
 * `test` - run all tests
