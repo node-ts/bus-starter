@@ -44,7 +44,7 @@ export const disposeBus = async () => {
   if (!busInstance) {
     throw new Error('Cannot dispose bus as it has not been initialized')
   }
-  busInstance.dispose()
+  await busInstance.dispose()
   busInstance = undefined
 }
 

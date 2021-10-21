@@ -1,7 +1,8 @@
 {
   "testRegex": "(src\\/.+\\.|/)(spec|integration)\\.ts$",
+  "setupFilesAfterEnv": ["<rootDir>/test/setup.ts"],
   "transform": {
-    "./src/.+\\.ts?$": [
+    "^.+\\.ts?$": [
       "esbuild-jest",
       {
         "sourcemap": true

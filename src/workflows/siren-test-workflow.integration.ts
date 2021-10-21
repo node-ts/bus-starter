@@ -3,7 +3,6 @@ import { bus, disposeBus, initializeBus } from '../bus'
 import { generateUuid } from '../messages/uuid'
 import { Listener } from '@node-ts/bus-core'
 import { Event } from '@node-ts/bus-messages'
-import { resolve } from 'path/posix'
 
 describe('SirenTestWorkflow', () => {
 
