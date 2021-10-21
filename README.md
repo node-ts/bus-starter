@@ -26,11 +26,6 @@ Your code stays cleaner, as only business logic related code needs to be written
 This starter project contains the following packages preconfigured and in a runnable state:
 
 * `@node-ts/bus-core` - The core service bus that manages sending, routing, dispatch, retries etc
-* `@node-ts/bus-workflow` - Enables workflow/saga definitions to be written that coordinate higher-order business processes
-* `@node-ts/logger-core` - A generic log abstraction that allows consumers to use their preferred logger
-* `@node-ts/logger-winston` - An adapter used to log messages using winston
-* `inversify` - An IoC framework for Typescript used to manage dependency injection
-
 ## Installation
 
 This repository should be cloned or forked into your own repository:
@@ -69,9 +64,10 @@ The following scripts are available as part of the starter project:
 
 * `build` - transpiles the code to `/dist`
 * `dev` - transpiles, runs and watches for code changes
-* `dev:rebuild` - transpiles and runs the app
 * `lint` - runs linting based on [@node-ts/code-standards](https://github.com/node-ts/code-standards)
 * `lint:fix` - attempts to fix linting violations
+* `test` - run all tests
+* `test:watch` - run tests in watch mode
 
 ## Running
 

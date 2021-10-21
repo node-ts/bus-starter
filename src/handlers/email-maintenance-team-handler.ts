@@ -1,13 +1,8 @@
-import { handlerFor, BusInstance } from '@node-ts/bus-core'
-import { EmailMaintenanceTeam, MaintenanceTeamEmailed } from '../messages'
+import { handlerFor } from '@node-ts/bus-core'
+import { EmailMaintenanceTeam } from '../messages'
+import * as emailService from '../services/email-service'
 
-export const emailMaintenanceTeamHandler = (bus: () => BusInstance) => handlerFor(
+export const emailMaintenanceTeamHandler = handlerFor(
   EmailMaintenanceTeam,
-  async ({ message, sirenId }) => {
-    console.log('Sending email to maintenance team to fix siren', { message, sirenId })
-
-    // Send the email
-    const maintenanceTeamEmailed = new MaintenanceTeamEmailed(sirenId)
-    await bus().publish(maintenanceTeamEmailed)
-  }
+  async ({ message, sirenId }) => emailService.sendEmail(message, sirenId)
 )

@@ -1,2 +1,2 @@
 export * from './siren-test-workflow'
-export * from './sirent-test-workflow-data'
+export * from './siren-test-workflow-data'
